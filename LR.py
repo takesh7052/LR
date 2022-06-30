@@ -10,21 +10,17 @@ from creme import metrics
 from creme import preprocessing
 from creme import datasets
 
-   
-    metric = metrics.Accuracy()
-    data = datasets.Phishing()
+metric = metrics.Accuracy()
+data = datasets.Phishing()
 
-    model = compose.Pipeline(
-     preprocessing.StandardScaler(),
-     linear_model.LogisticRegression()
-    )utput=[]
+model = compose.Pipeline(
+preprocessing.StandardScaler(),
+linear_model.LogisticRegression()
+)utput=[]
 
-    for A, b in data:
-        pred = model.predict_one(A) 
-        metric = metric.update(b, pred)
-        print(metric)
-        model = model.fit_one(A, b)
-
-
-
+for A, b in data:
+     pred = model.predict_one(A) 
+     metric = metric.update(b, pred)
+     print(metric)
+     model = model.fit_one(A, b)
 print(metric)
