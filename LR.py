@@ -16,7 +16,7 @@ data = datasets.Phishing()
 model = compose.Pipeline(
 preprocessing.StandardScaler(),
 linear_model.LogisticRegression()
-)utput=[]
+)
 
 for A, b in data:
      pred = model.predict_one(A) 
